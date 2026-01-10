@@ -1,0 +1,14 @@
+## Interface: 110207, 120000, 120001
+## Title: Ebon Might Extension Helper
+## Author: Xephyris-Blackrock-EU
+## Version: @project-version@
+## DefaultState: Enabled
+## IconTexture: Interface\Icons\spell_sarkareth
+## Category: Evoker
+
+## X-Curse-Project-ID: 
+## X-Wago-ID: 
+
+Libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua
+
+Init.lua
