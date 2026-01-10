@@ -548,7 +548,6 @@ EventUtil.ContinueOnAddOnLoaded(addonName, function()
 	local frame = CreateFrame("Frame")
 	frame.expirationTime = 0
 	frame.lastEbonMightCast = 0
-	frame.timer = nil
 	frame.customEventName = "EbonMightExtensionHelperEvent"
 	frame:RegisterEvent("LOADING_SCREEN_DISABLED")
 	frame:RegisterEvent("PLAYER_SPECIALIZATION_CHANGED")
@@ -678,7 +677,6 @@ EventUtil.ContinueOnAddOnLoaded(addonName, function()
 			self.expirationTime = self:GetEbonMightExpirationTime()
 		elseif event == self.customEventName then
 			local expectedCastEnd, previousExpirationTime, count = ...
-			print(event, expectedCastEnd, previousExpirationTime, count)
 			local spellId = select(9, UnitCastingInfo("player")) or select(8, UnitChannelInfo("player"))
 
 			if spellId == nil then
