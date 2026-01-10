@@ -588,6 +588,7 @@ EventUtil.ContinueOnAddOnLoaded(addonName, function()
 
 	function frame:GetEbonMightExpirationTime()
 		if Private.IsMidnight then
+			-- this will work once Blizz fixes it so the loop below can be removed
 			-- local auraData = C_UnitAuras.GetPlayerAuraBySpellID(395296)
 
 			-- return auraData and auraData.expirationTime or 0
