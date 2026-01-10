@@ -1,7 +1,7 @@
 # Ebon Might Extension Helper
 
-- [Curseforge]
-- [Wago]
+- [Curseforge](https://www.curseforge.com/wow/addons/ebon-might-extension-helper)
+- [Wago](https://addons.wago.io/addons/ebonmightextensionhelper)
 
 ## Features
 
