@@ -1,13 +1,11 @@
 local addonName, Private = ...
 
--- only Evokers, see classID here: https://wago.tools/db2/ChrSpecialization
-if select(3, UnitClass("player")) ~= 13 then
-	return
-end
-
-Private.IsMidnight = select(4, GetBuildInfo()) >= 120000
-
 EventUtil.ContinueOnAddOnLoaded(addonName, function()
+	-- only Evokers, see classID here: https://wago.tools/db2/ChrSpecialization
+	if select(3, UnitClass("player")) ~= 13 then
+		return
+	end
+
 	-- enum
 	do
 		Private.Enum = {}
@@ -379,12 +377,6 @@ EventUtil.ContinueOnAddOnLoaded(addonName, function()
 					end
 				end
 
-				local function AddCooldownViewerSounds(container)
-					local soundInfo = Private.Settings.GetCooldownViewerSounds()
-
-					RecursiveAddSounds(container, soundInfo.soundCategoryKeyToLabel, soundInfo.data)
-				end
-
 				local function AddCustomSounds(container)
 					local soundInfo = Private.Settings.GetCustomSoundGroups()
 
@@ -393,10 +385,6 @@ EventUtil.ContinueOnAddOnLoaded(addonName, function()
 
 				local function GetOptions(owner, rootDescription)
 					local container = Settings.CreateControlTextContainer()
-
-					if Private.IsMidnight then
-						pcall(AddCooldownViewerSounds, container)
-					end
 
 					AddCustomSounds(container)
 
@@ -429,19 +417,7 @@ EventUtil.ContinueOnAddOnLoaded(addonName, function()
 							local maxScrollExtent = extent * maxCharacters
 							rootDescription:SetScrollMode(maxScrollExtent)
 
-							if Private.IsMidnight then
-								elementInserter(settingBeingCreated, rootDescription)
-							else
-								local function IsSelected(optionData)
-									return settingBeingCreated:GetValue() == optionData.value
-								end
-
-								local function OnSelect(optionData)
-									return settingBeingCreated:SetValue(optionData.value)
-								end
-
-								elementInserter(rootDescription, IsSelected, OnSelect)
-							end
+							elementInserter(settingBeingCreated, rootDescription)
 						end)
 					end
 				)
@@ -587,27 +563,6 @@ EventUtil.ContinueOnAddOnLoaded(addonName, function()
 	end
 
 	function frame:GetEbonMightExpirationTime()
-		if Private.IsMidnight then
-			-- this will work once Blizz fixes it so the loop below can be removed
-			-- local auraData = C_UnitAuras.GetPlayerAuraBySpellID(395296)
-
-			-- return auraData and auraData.expirationTime or 0
-
-			for i = 1, 40 do
-				local auraData = C_UnitAuras.GetBuffDataByIndex("player", i, "PLAYER")
-
-				if auraData == nil then
-					return 0
-				end
-
-				if not issecretvalue(auraData.spellId) and auraData.spellId == 395296 then
-					return auraData.expirationTime
-				end
-			end
-
-			return 0
-		end
-
 		local auraData = C_UnitAuras.GetPlayerAuraBySpellID(395296)
 
 		return auraData and auraData.expirationTime or 0
