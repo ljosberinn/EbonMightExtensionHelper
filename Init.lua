@@ -247,23 +247,6 @@ EventUtil.ContinueOnAddOnLoaded(addonName, function()
 			end)
 		end
 
-		---@return SoundInfo
-		function Private.Settings.GetCooldownViewerSounds()
-			local soundCategoryKeyToLabel = {
-				Animals = COOLDOWN_VIEWER_SETTINGS_SOUND_ALERT_CATEGORY_ANIMALS,
-				Devices = COOLDOWN_VIEWER_SETTINGS_SOUND_ALERT_CATEGORY_DEVICES,
-				Impacts = COOLDOWN_VIEWER_SETTINGS_SOUND_ALERT_CATEGORY_IMPACTS,
-				Instruments = COOLDOWN_VIEWER_SETTINGS_SOUND_ALERT_CATEGORY_INSTRUMENTS,
-				War2 = COOLDOWN_VIEWER_SETTINGS_SOUND_ALERT_CATEGORY_WAR2,
-				War3 = COOLDOWN_VIEWER_SETTINGS_SOUND_ALERT_CATEGORY_WAR3,
-			}
-
-			return {
-				soundCategoryKeyToLabel = soundCategoryKeyToLabel,
-				data = CooldownViewerSoundData,
-			}
-		end
-
 		local L = Private.L
 		local settingsName = C_AddOns.GetAddOnMetadata(addonName, "Title")
 		local category, layout = Settings.RegisterVerticalLayoutCategory(settingsName)
