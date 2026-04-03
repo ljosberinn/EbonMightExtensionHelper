@@ -1,8 +1,7 @@
 local addonName, Private = ...
 
 EventUtil.ContinueOnAddOnLoaded(addonName, function()
-	-- only Evokers, see classID here: https://wago.tools/db2/ChrSpecialization
-	if select(3, UnitClass("player")) ~= 13 then
+	if select(3, UnitClass("player")) ~= Constants.UICharacterClasses.Evoker then
 		return
 	end
 
