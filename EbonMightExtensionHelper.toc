@@ -1,4 +1,4 @@
-## Interface: 120007
+## Interface: 120007, 120100
 ## Title: Ebon Might Extension Helper
 ## Author: Xephyris-Blackrock-EU
 ## Version: @project-version@

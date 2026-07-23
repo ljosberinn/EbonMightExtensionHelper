@@ -5,6 +5,13 @@ EventUtil.ContinueOnAddOnLoaded(addonName, function()
 		return
 	end
 
+	if select(4, GetBuildInfo()) >= 120100 then
+		print(
+			"Ebon Might Extension Helper can no longer function as of patch 12.1.0 - thank you for using it, you're free to uninstall it. It disables itself now."
+		)
+		return
+	end
+
 	-- enum
 	do
 		Private.Enum = {}
@@ -177,7 +184,7 @@ EventUtil.ContinueOnAddOnLoaded(addonName, function()
 				if needsSplitting then
 					groupCount = groupCount + 1
 					tableKey = isCustomGroup
-							and string.format("%s %d", Private.L.Settings.SoundCategoryCustom, groupCount)
+						and string.format("%s %d", Private.L.Settings.SoundCategoryCustom, groupCount)
 						or string.format("%s %d", groupName, groupCount)
 				end
 
@@ -194,7 +201,7 @@ EventUtil.ContinueOnAddOnLoaded(addonName, function()
 							groupCount = groupCount + 1
 
 							tableKey = isCustomGroup
-									and string.format("%s %d", Private.L.Settings.SoundCategoryCustom, groupCount)
+								and string.format("%s %d", Private.L.Settings.SoundCategoryCustom, groupCount)
 								or string.format("%s %d", groupName, groupCount)
 
 							if soundInfo.data[tableKey] == nil then
@@ -467,9 +474,9 @@ EventUtil.ContinueOnAddOnLoaded(addonName, function()
 
 					tooltip:AddLine(L.Settings.AddonCompartmentTooltipLine1:format(WrapTextInColorCode(
 						string.lower(
-							---@diagnostic disable-next-line: param-type-mismatch
+						---@diagnostic disable-next-line: param-type-mismatch
 							EbonMightExtensionHelperSaved.Settings.Enabled and L.Settings.EnabledLabel
-								or L.Settings.DisabledLabel
+							or L.Settings.DisabledLabel
 						),
 						EbonMightExtensionHelperSaved.Settings.Enabled and enabledColor or disabledColor
 					)))
